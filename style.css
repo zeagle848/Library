@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Mulish", sans-serif;
+}
+
+/* HEADER STYLING */
+#library-header {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  height: 100px;
+  background-color: #fef8ea;
+  border-bottom: solid 5px #f7e6c3;
+  width: 100%;
+  margin-bottom: 20px;
+}
+#header-heading {
+  font-family: "Mulish", sans-serif;
+  font-weight: normal;
+  padding-top: 20px;
+}
+#add-book-button {
+  margin-left: 1090px;
+  height: 50px;
+  margin-top: 30px;
+  border-radius: 0;
+  font-family: "Mulish", sans-serif;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+/* FORM STYLING */
+
+#form-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 2px black;
+  padding: 50px;
+  position: relative;
+  border-radius: 5px;
+  display: none;
+}
+
+#cancel-input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  margin: 0;
+  padding: 9px;
+  border-left: solid 2px black;
+  border-bottom: solid 2px black;
+  font-weight: bolder;
+  background-color: #fc5353;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+#form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.book-info-input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin: 20px;
+}
+
+.book-info-input:focus {
+  outline: none;
+  color: black;
+}
+
+#read-book-span {
+  margin-bottom: 40px;
+}
+
+#submit-book-button {
+  border-radius: 0px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  width: 100%;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  font-family: "Mulish", sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* CARD STYLING */
+
+#cards-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.card-element {
+  background-color: #fef8ea;
+  width: 150px;
+  height: 200px;
+  margin: 30px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 3px 2px grey;
+  border-left: 8px solid #997226;
+  position: relative;
+}
+
+.card-element .delete-book {
+  visibility: hidden;
+}
+
+.card-element:hover .delete-book {
+  visibility: visible;
+}
+
+.delete-book {
+  position: absolute;
+  background-color: #fc5353;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 3px;
+  width: 15px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.card-header {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-read-book-span {
+  font-size: 10px;
+}
+
+.card-content {
+  padding: 10px;
+}
+
+.by-element > i {
+  font-size: 10px;
+}
+
+.card-pages {
+  font-size: 15px;
+}

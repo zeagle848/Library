@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Library</title>
+  </head>
+  <body>
+    <header id="library-header">
+      <img
+        src="./images/book_stack.png"
+        alt="a stack of books"
+        id="header-image"
+      />
+      <h1 id="header-heading">My Library</h1>
+      <button id="add-book-button">Add Book</button>
+    </header>
+    <div id="form-container">
+      <p id="cancel-input">X</p>
+      <form onsubmit="return submitFunction();" id="form">
+        <h2>Tell me about your book</h2>
+        <span
+          >Title:
+          <input
+            type="text"
+            class="book-info-input"
+            id="title-input"
+            required="required"
+        /></span>
+        <span
+          >Author:
+          <input
+            type="text"
+            class="book-info-input"
+            id="author-input"
+            required="required"
+        /></span>
+        <span
+          >No. pages:
+          <input
+            type="text"
+            class="book-info-input"
+            id="pages-input"
+            required="required"
+            pattern="[0-9]+"
+            title="Please only enter numbers"
+        /></span>
+        <span class="book-info-input" id="read-book-span"
+          >Have you read this book?
+          <label class="switch">
+            <input type="checkbox" id="read-book-checkbox" />
+            <span class="slider"></span> </label
+        ></span>
+        <input type="submit" value="Submit" id="submit-book-button" />
+      </form>
+    </div>
+    <div id="cards-container">
+      <div class="card-element">
+        <p class="delete-book">X</p>
+        <div class="card-header">
+          <span class="card-content-content">The Secret History</span>
+          <span class="by-element"><i>by</i></span>
+          <span class="card-content-content">Donna Tartt</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-content, card-pages">596 pages</span>
+          <span class="card-read-book-span"
+            >Have you read this book?
+            <label class="switch">
+              <input type="checkbox" class="-cardread-book-checkbox" />
+              <span class="slider"></span> </label
+          ></span>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
