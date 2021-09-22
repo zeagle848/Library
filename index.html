@@ -19,7 +19,7 @@
     </header>
     <div id="form-container">
       <p id="cancel-input">X</p>
-      <form onsubmit="return submitFunction();" id="form">
+      <form onsubmit="return submitFunction();" id="new-book-form">
         <h2>Tell me about your book</h2>
         <span
           >Title:
@@ -56,25 +56,7 @@
         <input type="submit" value="Submit" id="submit-book-button" />
       </form>
     </div>
-    <div id="cards-container">
-      <div class="card-element">
-        <p class="delete-book">X</p>
-        <div class="card-header">
-          <span class="card-content-content">The Secret History</span>
-          <span class="by-element"><i>by</i></span>
-          <span class="card-content-content">Donna Tartt</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-content, card-pages">596 pages</span>
-          <span class="card-read-book-span"
-            >Have you read this book?
-            <label class="switch">
-              <input type="checkbox" class="-cardread-book-checkbox" />
-              <span class="slider"></span> </label
-          ></span>
-        </div>
-      </div>
-    </div>
+    <div id="cards-container"></div>
     <script src="./script.js"></script>
   </body>
 </html>

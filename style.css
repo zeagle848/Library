@@ -64,7 +64,7 @@ body {
   border-bottom-left-radius: 3px;
 }
 
-#form {
+#new-book-form {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -126,10 +126,6 @@ body {
   position: relative;
 }
 
-.card-element .delete-book {
-  visibility: hidden;
-}
-
 .card-element:hover .delete-book {
   visibility: visible;
 }
@@ -147,6 +143,7 @@ body {
   display: flex;
   justify-content: center;
   cursor: pointer;
+  visibility: hidden;
 }
 
 .card-header {
@@ -173,8 +170,9 @@ body {
   padding: 10px;
 }
 
-.by-element > i {
+.by-element {
   font-size: 10px;
+  font-style: italic;
 }
 
 .card-pages {
