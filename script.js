@@ -1,13 +1,35 @@
 let myLibrary = [];
 
-function Book(author, title, pages, isRead) {
-  this.author = author;
+function Book(title, author, pages, isRead) {
   this.title = title;
+  this.author = author;
   this.pages = pages;
   this.isRead = isRead;
 }
 
 const inputForm = document.getElementById("form-container");
+
+function toggleIsRead(checkbox, titleToToggle) {
+  checkbox.addEventListener("change", () => {
+    for (let i = 0; i < myLibrary.length; i++) {
+      if (myLibrary[i].title === titleToToggle) {
+        myLibrary[i].isRead = checkbox.checked;
+      }
+    }
+  });
+}
+
+function addEventForDelete(deleteButton, titleToDelete) {
+  deleteButton.addEventListener("click", () => {
+    for (let i = 0; i < myLibrary.length; i++) {
+      if (myLibrary[i].title === titleToDelete) {
+        myLibrary.splice(i, 1);
+      }
+    }
+    clearLibrary();
+    populateLibrary(myLibrary);
+  });
+}
 
 function createCard(title, author, pages, isRead) {
   const cardContainer = document.querySelector("#cards-container");
@@ -17,8 +39,10 @@ function createCard(title, author, pages, isRead) {
   cardElement.setAttribute("class", "card-element");
 
   const deleteBookButton = document.createElement("p");
-  deleteBookButton.textContent = "X";
   deleteBookButton.setAttribute("class", "delete-book");
+  deleteBookButton.textContent = "X";
+  addEventForDelete(deleteBookButton, title);
+
   cardElement.append(deleteBookButton);
 
   const cardHeader = document.createElement("div");
@@ -58,6 +82,7 @@ function createCard(title, author, pages, isRead) {
   cardReadBookCheckbox.setAttribute("type", "checkbox");
   cardReadBookCheckbox.setAttribute("class", "card-read-book-checkbox");
   cardReadBookCheckbox.checked = isRead;
+  toggleIsRead(cardReadBookCheckbox, title);
   cardReadBookSpan.append(cardReadBookCheckbox);
 
   fragment.append(cardElement);
@@ -73,7 +98,7 @@ function clearLibrary() {
 
 function populateLibrary(library) {
   library.forEach((book) => {
-    createCard(book.author, book.title, book.pages, book.isRead);
+    createCard(book.title, book.author, book.pages, book.isRead);
   });
 }
 
@@ -126,3 +151,20 @@ document.getElementById("cancel-input").addEventListener("click", () => {
 document.getElementById("add-book-button").addEventListener("click", () => {
   inputForm.style.display = "block";
 });
+
+document
+  .getElementById("refresh-library-button")
+  .addEventListener("click", () => {
+    clearLibrary();
+    populateLibrary(myLibrary);
+  });
+
+document
+  .getElementById("populate-library-button")
+  .addEventListener("click", () => {
+    myLibrary.length = 0;
+    myLibrary.push(new Book("The Secret History", "Donna Tartt", "512", true));
+    myLibrary.push(new Book("The Little Friend", "Donna Tartt", "232", false));
+    myLibrary.push(new Book("The Goldfinch", "Donna Tartt", "872", true));
+    populateLibrary(myLibrary);
+  });
