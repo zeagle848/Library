@@ -214,7 +214,7 @@ footer {
   align-content: flex-end;
   justify-content: flex-end;
   font-family: "M PLUS 1p", sans-serif;
-  font-weight: 100;
+  font-weight: lighter;
   padding: 4px;
 }
 
@@ -224,7 +224,7 @@ footer > span > a {
 
 #flex-wrapper {
   display: flex;
-  min-height: 80vh;
+  min-height: 82vh;
   flex-direction: column;
   justify-content: space-between;
 }
