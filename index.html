@@ -16,7 +16,7 @@
       />
       <h1 id="header-heading">My Library</h1>
       <div id="button-container">
-        <button id="add-book-button" class="header-button">Add Book</button>
+        <button id="add-book-button" class="header-button">+</button>
         <button id="refresh-library-button" class="header-button">
           Refresh Library
         </button>
@@ -64,7 +64,15 @@
         <input type="submit" value="Submit" id="submit-book-button" />
       </form>
     </div>
-    <div id="cards-container"></div>
+    <div id="flex-wrapper">
+      <div id="cards-container"></div>
+      <footer id="footer">
+        <span id="footer-content"
+          >Created by William Carpenter-Frank | 2021 |
+          <a href="https://github.com/zeagle848/Library">GitHub</a></span
+        >
+      </footer>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>
