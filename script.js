@@ -7,7 +7,7 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead;
 }
 
-const inputForm = document.getElementById("form-container");
+const inputForm = document.getElementById("form-wrapper");
 
 function toggleIsRead(checkbox, titleToToggle) {
   checkbox.addEventListener("change", () => {
@@ -30,6 +30,20 @@ function addEventForDelete(deleteButton, titleToDelete) {
     populateLibrary(myLibrary);
   });
 }
+
+const closeForm = () => {
+  inputForm.style.display = "none";
+
+  const titleElement = document.querySelector("#title-input");
+  const authorElement = document.querySelector("#author-input");
+  const pagesElement = document.querySelector("#pages-input");
+  const isReadElement = document.querySelector("#read-book-checkbox");
+
+  titleElement.value = "";
+  authorElement.value = "";
+  pagesElement.value = "";
+  isReadElement.checked = false;
+};
 
 function createCard(title, author, pages, isRead) {
   const cardContainer = document.querySelector("#cards-container");
@@ -125,28 +139,18 @@ function submitFunction() {
     myLibrary.push(new Book(title, author, pages, isRead));
     clearLibrary();
     populateLibrary(myLibrary);
-    titleElement.value = "";
-    authorElement.value = "";
-    pagesElement.value = "";
-    isReadElement.checked = false;
-    inputForm.style.display = "none";
+    closeForm();
     return false;
   }
 }
 
-document.getElementById("cancel-input").addEventListener("click", () => {
-  inputForm.style.display = "none";
-
-  const titleElement = document.querySelector("#title-input");
-  const authorElement = document.querySelector("#author-input");
-  const pagesElement = document.querySelector("#pages-input");
-  const isReadElement = document.querySelector("#read-book-checkbox");
-
-  titleElement.value = "";
-  authorElement.value = "";
-  pagesElement.value = "";
-  isReadElement.checked = false;
+document.getElementById("form-wrapper").addEventListener("click", (event) => {
+  if (event.target === document.getElementById("form-wrapper")) {
+    closeForm();
+  }
 });
+
+document.getElementById("cancel-input").addEventListener("click", closeForm);
 
 document.getElementById("add-book-button").addEventListener("click", () => {
   inputForm.style.display = "block";

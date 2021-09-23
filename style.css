@@ -63,6 +63,16 @@ body {
 
 /* FORM STYLING */
 
+#form-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
 #form-container {
   display: flex;
   justify-content: center;
@@ -75,7 +85,8 @@ body {
   padding: 50px;
   position: relative;
   border-radius: 5px;
-  display: none;
+  background-color: white;
+  margin-top: 7rem;
 }
 
 #cancel-input {

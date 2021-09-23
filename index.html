@@ -8,6 +8,47 @@
     <title>Library</title>
   </head>
   <body>
+    <div id="form-wrapper">
+      <div id="form-container">
+        <p id="cancel-input">X</p>
+        <form onsubmit="return submitFunction();" id="new-book-form">
+          <h2>Tell me about your book</h2>
+          <span
+            >Title:
+            <input
+              type="text"
+              class="book-info-input"
+              id="title-input"
+              required="required"
+          /></span>
+          <span
+            >Author:
+            <input
+              type="text"
+              class="book-info-input"
+              id="author-input"
+              required="required"
+          /></span>
+          <span
+            >No. pages:
+            <input
+              type="text"
+              class="book-info-input"
+              id="pages-input"
+              required="required"
+              pattern="[0-9]+"
+              title="Please only enter numbers"
+          /></span>
+          <span class="book-info-input" id="read-book-span"
+            >Have you read this book?
+            <label class="switch">
+              <input type="checkbox" id="read-book-checkbox" />
+              <span class="slider"></span> </label
+          ></span>
+          <input type="submit" value="Submit" id="submit-book-button" />
+        </form>
+      </div>
+    </div>
     <header id="library-header">
       <img
         src="./images/book_stack.png"
@@ -25,45 +66,6 @@
         </button>
       </div>
     </header>
-    <div id="form-container">
-      <p id="cancel-input">X</p>
-      <form onsubmit="return submitFunction();" id="new-book-form">
-        <h2>Tell me about your book</h2>
-        <span
-          >Title:
-          <input
-            type="text"
-            class="book-info-input"
-            id="title-input"
-            required="required"
-        /></span>
-        <span
-          >Author:
-          <input
-            type="text"
-            class="book-info-input"
-            id="author-input"
-            required="required"
-        /></span>
-        <span
-          >No. pages:
-          <input
-            type="text"
-            class="book-info-input"
-            id="pages-input"
-            required="required"
-            pattern="[0-9]+"
-            title="Please only enter numbers"
-        /></span>
-        <span class="book-info-input" id="read-book-span"
-          >Have you read this book?
-          <label class="switch">
-            <input type="checkbox" id="read-book-checkbox" />
-            <span class="slider"></span> </label
-        ></span>
-        <input type="submit" value="Submit" id="submit-book-button" />
-      </form>
-    </div>
     <div id="flex-wrapper">
       <div id="cards-container"></div>
       <footer id="footer">
