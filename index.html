@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="./style.css" />
     <title>Library</title>
   </head>
-  <body>
-    <div id="form-wrapper">
+  <body class="body">
+    <div id="form-wrapper" class="form-wrapper">
       <div id="form-container">
         <p id="cancel-input">X</p>
-        <form onsubmit="return submitFunction();" id="new-book-form">
+        <form onsubmit="saveBook(); return false;" id="new-book-form">
           <h2>Tell me about your book</h2>
           <span
             >Title:
@@ -75,6 +75,6 @@
         >
       </footer>
     </div>
-    <script src="./script.js"></script>
+    <script type="module" src="./script.js"></script>
   </body>
 </html>

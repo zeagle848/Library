@@ -1,4 +1,6 @@
-let myLibrary = [];
+import { closeForm, clearLibrary } from "./utils/functions.js";
+
+let myLibrary = retrieveLibrary() || [];
 
 function Book(title, author, pages, isRead) {
   this.title = title;
@@ -7,13 +9,35 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead;
 }
 
-const inputForm = document.getElementById("form-wrapper");
+const body = document.getElementsByClassName("body")[0];
+const formWrapper = document.getElementById("form-wrapper");
+
+populateLibrary(myLibrary);
+
+function storeLibrary() {
+  sessionStorage.setItem("my_library", JSON.stringify(myLibrary));
+}
+
+function retrieveLibrary() {
+  try {
+    return JSON.parse(sessionStorage.getItem("my_library"));
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+function openForm() {
+  console.log("Im open");
+  formWrapper.classList.add("form-wrapper-visible");
+  body.classList.add("body-no-scroll");
+}
 
 function toggleIsRead(checkbox, titleToToggle) {
   checkbox.addEventListener("change", () => {
     for (let i = 0; i < myLibrary.length; i++) {
       if (myLibrary[i].title === titleToToggle) {
         myLibrary[i].isRead = checkbox.checked;
+        storeLibrary();
       }
     }
   });
@@ -28,22 +52,9 @@ function addEventForDelete(deleteButton, titleToDelete) {
     }
     clearLibrary();
     populateLibrary(myLibrary);
+    storeLibrary();
   });
 }
-
-const closeForm = () => {
-  inputForm.style.display = "none";
-
-  const titleElement = document.querySelector("#title-input");
-  const authorElement = document.querySelector("#author-input");
-  const pagesElement = document.querySelector("#pages-input");
-  const isReadElement = document.querySelector("#read-book-checkbox");
-
-  titleElement.value = "";
-  authorElement.value = "";
-  pagesElement.value = "";
-  isReadElement.checked = false;
-};
 
 function createCard(title, author, pages, isRead) {
   const cardContainer = document.querySelector("#cards-container");
@@ -103,20 +114,13 @@ function createCard(title, author, pages, isRead) {
   cardContainer.append(fragment);
 }
 
-function clearLibrary() {
-  const cardContainer = document.querySelector("#cards-container");
-  while (cardContainer.firstChild) {
-    cardContainer.removeChild(cardContainer.firstChild);
-  }
-}
-
 function populateLibrary(library) {
   library.forEach((book) => {
     createCard(book.title, book.author, book.pages, book.isRead);
   });
 }
 
-function submitFunction() {
+function saveBook() {
   const titleElement = document.querySelector("#title-input");
   const authorElement = document.querySelector("#author-input");
   const pagesElement = document.querySelector("#pages-input");
@@ -134,27 +138,24 @@ function submitFunction() {
     pagesElement.patternMismatch === true
   ) {
     console.log("I'm in the if statement");
-    return false;
   } else {
     myLibrary.push(new Book(title, author, pages, isRead));
     clearLibrary();
     populateLibrary(myLibrary);
     closeForm();
-    return false;
+    storeLibrary();
   }
 }
 
-document.getElementById("form-wrapper").addEventListener("click", (event) => {
-  if (event.target === document.getElementById("form-wrapper")) {
+formWrapper.addEventListener("click", (event) => {
+  if (event.target === formWrapper) {
     closeForm();
   }
 });
 
 document.getElementById("cancel-input").addEventListener("click", closeForm);
 
-document.getElementById("add-book-button").addEventListener("click", () => {
-  inputForm.style.display = "block";
-});
+document.getElementById("add-book-button").addEventListener("click", openForm);
 
 document
   .getElementById("refresh-library-button")
@@ -167,8 +168,11 @@ document
   .getElementById("populate-library-button")
   .addEventListener("click", () => {
     myLibrary.length = 0;
-    myLibrary.push(new Book("The Secret History", "Donna Tartt", "512", true));
-    myLibrary.push(new Book("The Little Friend", "Donna Tartt", "232", false));
-    myLibrary.push(new Book("The Goldfinch", "Donna Tartt", "872", true));
+    myLibrary.push(new Book("The Secret History", "Donna Tartt", "551", true));
+    myLibrary.push(new Book("The Little Friend", "Donna Tartt", "643", false));
+    myLibrary.push(new Book("The Goldfinch", "Donna Tartt", "1006", true));
+    storeLibrary();
     populateLibrary(myLibrary);
   });
+
+window.saveBook = saveBook;
