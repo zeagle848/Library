@@ -9,9 +9,13 @@
   </head>
   <body class="body">
     <div id="form-wrapper" class="form-wrapper">
-      <div id="form-container">
-        <p id="cancel-input">X</p>
-        <form onsubmit="saveBook(); return false;" id="new-book-form">
+      <div id="form-container" class="form-container">
+        <p id="cancel-input" class="cancel-input">X</p>
+        <form
+          onsubmit="saveBook(); return false;"
+          id="new-book-form"
+          class="new-book-form"
+        >
           <h2>Tell me about your book</h2>
           <span
             >Title:
@@ -39,25 +43,32 @@
               pattern="[0-9]+"
               title="Please only enter numbers"
           /></span>
-          <span class="book-info-input" id="read-book-span"
+          <span class="book-info-input read-book-span" id="read-book-span"
             >Have you read this book?
             <label class="switch">
               <input type="checkbox" id="read-book-checkbox" />
               <span class="slider"></span> </label
           ></span>
-          <input type="submit" value="Submit" id="submit-book-button" />
+          <input
+            type="submit"
+            value="Submit"
+            id="submit-book-button"
+            class="submit-book-button"
+          />
         </form>
       </div>
     </div>
-    <header id="library-header">
+    <header id="library-header" class="library-header">
       <img
         src="./images/book_stack.png"
         alt="a stack of books"
         id="header-image"
       />
-      <h1 id="header-heading">My Library</h1>
-      <div id="button-container">
-        <button id="add-book-button" class="header-button">+</button>
+      <h1 id="header-heading" class="header-heading">My Library</h1>
+      <div id="button-container" class="button-container">
+        <button id="add-book-button" class="header-button add-book-button">
+          +
+        </button>
         <button id="refresh-library-button" class="header-button">
           Refresh Library
         </button>
@@ -66,9 +77,9 @@
         </button>
       </div>
     </header>
-    <div id="flex-wrapper">
-      <div id="cards-container"></div>
-      <footer id="footer">
+    <div id="flex-wrapper" class="flex-wrapper">
+      <div id="cards-container" class="cards-container"></div>
+      <footer id="footer" class="footer">
         <span id="footer-content"
           >Created by William Carpenter-Frank | 2021 |
           <a href="https://github.com/zeagle848/Library">GitHub</a></span
