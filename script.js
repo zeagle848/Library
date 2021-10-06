@@ -1,30 +1,16 @@
 import { closeForm, clearLibrary } from "./utils/functions.js";
-
-let myLibrary = retrieveLibrary() || [];
-
-function Book(title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
-}
+import {
+  getLibrary,
+  addBook,
+  removeBook,
+  toggleIsRead,
+  storeLibrary,
+} from "./stores/library.js";
 
 const body = document.getElementsByClassName("body")[0];
 const formWrapper = document.getElementById("form-wrapper");
 
-populateLibrary(myLibrary);
-
-function storeLibrary() {
-  sessionStorage.setItem("my_library", JSON.stringify(myLibrary));
-}
-
-function retrieveLibrary() {
-  try {
-    return JSON.parse(sessionStorage.getItem("my_library"));
-  } catch (error) {
-    console.error(error);
-  }
-}
+populateLibrary(getLibrary());
 
 function openForm() {
   console.log("Im open");
@@ -32,26 +18,11 @@ function openForm() {
   body.classList.add("body-no-scroll");
 }
 
-function toggleIsRead(checkbox, titleToToggle) {
-  checkbox.addEventListener("change", () => {
-    for (let i = 0; i < myLibrary.length; i++) {
-      if (myLibrary[i].title === titleToToggle) {
-        myLibrary[i].isRead = checkbox.checked;
-        storeLibrary();
-      }
-    }
-  });
-}
-
 function addEventForDelete(deleteButton, titleToDelete) {
   deleteButton.addEventListener("click", () => {
-    for (let i = 0; i < myLibrary.length; i++) {
-      if (myLibrary[i].title === titleToDelete) {
-        myLibrary.splice(i, 1);
-      }
-    }
+    removeBook(titleToDelete);
     clearLibrary();
-    populateLibrary(myLibrary);
+    populateLibrary(getLibrary());
     storeLibrary();
   });
 }
@@ -139,9 +110,9 @@ function saveBook() {
   ) {
     console.log("I'm in the if statement");
   } else {
-    myLibrary.push(new Book(title, author, pages, isRead));
+    addBook(title, author, pages, isRead);
     clearLibrary();
-    populateLibrary(myLibrary);
+    populateLibrary(getLibrary());
     closeForm();
     storeLibrary();
   }
@@ -161,18 +132,17 @@ document
   .getElementById("refresh-library-button")
   .addEventListener("click", () => {
     clearLibrary();
-    populateLibrary(myLibrary);
+    populateLibrary(getLibrary());
   });
 
 document
   .getElementById("populate-library-button")
   .addEventListener("click", () => {
-    myLibrary.length = 0;
-    myLibrary.push(new Book("The Secret History", "Donna Tartt", "551", true));
-    myLibrary.push(new Book("The Little Friend", "Donna Tartt", "643", false));
-    myLibrary.push(new Book("The Goldfinch", "Donna Tartt", "1006", true));
+    addBook("The Secret History", "Donna Tartt", "551", true);
+    addBook("The Little Friend", "Donna Tartt", "643", false);
+    addBook("The Goldfinch", "Donna Tartt", "1006", true);
     storeLibrary();
-    populateLibrary(myLibrary);
+    populateLibrary(getLibrary());
   });
 
 window.saveBook = saveBook;
