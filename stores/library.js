@@ -1,4 +1,4 @@
-const library = retrieveLibrary() || [];
+let library = retrieveLibrary() || [];
 
 function Book(title, author, pages, isRead) {
   this.title = title;
@@ -14,7 +14,8 @@ function retrieveLibrary() {
     console.error(error);
   }
 }
-export function storeLibrary() {
+
+function storeLibrary() {
   sessionStorage.setItem("my_library", JSON.stringify(library));
 }
 
@@ -24,6 +25,7 @@ export function getLibrary() {
 
 export function addBook(title, author, pages, isRead) {
   library.push(new Book(title, author, pages, isRead));
+  storeLibrary();
 }
 
 export function removeBook(titleToDelete) {
@@ -32,6 +34,7 @@ export function removeBook(titleToDelete) {
       library.splice(i, 1);
     }
   }
+  storeLibrary();
 }
 
 export function toggleIsRead(checkbox, titleToToggle) {
@@ -43,6 +46,11 @@ export function toggleIsRead(checkbox, titleToToggle) {
       }
     }
   });
+}
+
+export function deleteLibrary(){
+  library = [];
+  storeLibrary();
 }
 //USE A CONSTANT FOR THE SESSION STORAGE KEY
 //DO ALL SESSION STORAGE WITHIN THIS FILE

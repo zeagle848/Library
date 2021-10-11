@@ -1,0 +1,33 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "A web based library application",
+  "main": "script.js",
+  "dependencies": {
+    "cypress": "^8.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-cypress": "^2.11.3",
+    "eslint-plugin-import": "^2.24.2",
+    "mocha": "^9.1.2",
+    "prettier": "2.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier . --write",
+    "lint": "eslint . "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeagle848/calculator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeagle848/calculator/issues"
+  },
+  "homepage": "https://github.com/zeagle848/calculator#readme"
+}

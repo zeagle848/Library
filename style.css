@@ -61,6 +61,11 @@
   padding-bottom: 10px;
 }
 
+.delete-library-button{
+  background-color: #fc5353;
+  border: 2px solid black;
+}
+
 .add-book-button:hover {
   transform: scale(0.9);
 }
@@ -175,10 +180,6 @@
   position: relative;
 }
 
-.card-element:hover .delete-book {
-  visibility: visible;
-}
-
 .delete-book {
   position: absolute;
   background-color: #fc5353;
@@ -193,6 +194,10 @@
   justify-content: center;
   cursor: pointer;
   visibility: hidden;
+}
+
+.delete-book-visible {
+  visibility: visible;
 }
 
 .card-header {
