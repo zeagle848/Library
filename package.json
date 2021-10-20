@@ -18,7 +18,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier . --write",
-    "lint": "eslint . "
+    "lint": "eslint . ",
+    "e2e": "cypress open"
   },
   "repository": {
     "type": "git",

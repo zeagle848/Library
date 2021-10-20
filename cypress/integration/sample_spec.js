@@ -27,13 +27,12 @@ describe('Testing the library', () => {
         cy.get('#cancel-input').click();
         cy.get('#form-container').should('not.be.visible');
     });
-    //THE TEST BELOW ISN'T WORKING.
-    // it('Can close submit form when the user clicks on the background', () => {
-    //     cy.get('#add-book-button').click();
-    //     cy.get('#form-container').should('be.visible');
-    //     cy.get('#library-header').click({ force: true });
-    //     cy.get('#form-container').should('not.be.visible');
-    // });
+    it('Can close submit form when the user clicks on the background', () => {
+        cy.get('#add-book-button').click();
+        cy.get('#form-container').should('be.visible');
+        cy.get('#form-wrapper').click({ force: true });
+        cy.get('#form-container').should('not.be.visible');
+    });
     it("Doesn't submit the form when none of the fields are filled out", () => {
         cy.get('#add-book-button').click();
         cy.get('#submit-book-button').click();
@@ -90,5 +89,28 @@ describe('Testing the library', () => {
         cy.reload();
 
         cy.get('.card-checkbox').should('be.checked');
+
+        cy.get('#delete-library-button').click();
+    });
+    it('Removes books based on ID', () => {
+        cy.get('#add-book-button').click();
+        cy.get('#title-input').type('The Secret History');
+        cy.get('#author-input').type('Donna Tartt');
+        cy.get('#pages-input').type('123');
+        cy.get('#submit-book-button').click();
+
+        cy.get('#add-book-button').click();
+        cy.get('#title-input').type('The Secret History');
+        cy.get('#author-input').type('Donna Tartt');
+        cy.get('#pages-input').type('123');
+        cy.get('#submit-book-button').click();
+
+        cy.get('.card-element').first().trigger('mouseover');
+        cy.get('.delete-book').first().click();
+
+        cy.reload();
+
+        cy.get('#cards-container').children().should('have.length', 1);
+        cy.get('#delete-library-button').click();
     });
 });

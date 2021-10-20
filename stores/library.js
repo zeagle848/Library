@@ -1,10 +1,11 @@
 let library = retrieveLibrary() || [];
 
-function Book(title, author, pages, isRead) {
+export function Book(title, author, pages, isRead, id) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.isRead = isRead;
+  this.id = id;
 }
 
 function retrieveLibrary() {
@@ -23,24 +24,24 @@ export function getLibrary() {
   return library;
 }
 
-export function addBook(title, author, pages, isRead) {
-  library.push(new Book(title, author, pages, isRead));
+export function addBook(title, author, pages, isRead, bookID) {
+  library.push(new Book(title, author, pages, isRead, bookID));
   storeLibrary();
 }
 
-export function removeBook(titleToDelete) {
+export function removeBook(bookID) {
   for (let i = 0; i < library.length; i++) {
-    if (library[i].title === titleToDelete) {
+    if (library[i].id === bookID) {
       library.splice(i, 1);
     }
   }
   storeLibrary();
 }
 
-export function toggleIsRead(checkbox, titleToToggle) {
+export function toggleIsRead(checkbox, bookID) {
   checkbox.addEventListener("change", () => {
     for (let i = 0; i < library.length; i++) {
-      if (library[i].title === titleToToggle) {
+      if (library[i].id === bookID) {
         library[i].isRead = checkbox.checked;
         storeLibrary();
       }
@@ -52,5 +53,3 @@ export function deleteLibrary(){
   library = [];
   storeLibrary();
 }
-//USE A CONSTANT FOR THE SESSION STORAGE KEY
-//DO ALL SESSION STORAGE WITHIN THIS FILE
