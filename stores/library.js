@@ -1,51 +1,55 @@
-let library = retrieveLibrary() || [];
-
-export function Book(title, author, pages, isRead, id) { //Converted to a factory function
-  return {title, author, pages, isRead, id};
-}
-
-function retrieveLibrary() {
-  try {
-    return JSON.parse(sessionStorage.getItem("my_library"));
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-function storeLibrary() {
-  sessionStorage.setItem("my_library", JSON.stringify(library));
-}
-
-export function getLibrary() {
-  return library;
-}
-
-export function addBook(title, author, pages, isRead, id) {
-  library.push({title, author, pages, isRead, id});
-  storeLibrary();
-}
-
-export function removeBook(bookID) {
-  for (let i = 0; i < library.length; i++) {
-    if (library[i].id === bookID) {
-      library.splice(i, 1);
+export class Library {
+    #retrieveLibrary() {
+        try {
+            return JSON.parse(sessionStorage.getItem('my_library'));
+        } catch (error) {
+            console.error(error);
+        }
     }
-  }
-  storeLibrary();
-}
 
-export function toggleIsRead(checkbox, bookID) {
-  checkbox.addEventListener("change", () => {
-    for (let i = 0; i < library.length; i++) {
-      if (library[i].id === bookID) {
-        library[i].isRead = checkbox.checked;
-        storeLibrary();
-      }
+    constructor() {
+        this.libraryArray = this.#retrieveLibrary() || [];
     }
-  });
-}
 
-export function deleteLibrary(){
-  library = [];
-  storeLibrary();
+    getLibrary() {
+        return this.libraryArray;
+    }
+
+    Book(title, author, pages, isRead, id) {
+        return { title, author, pages, isRead, id };
+    }
+
+    #storeLibrary() {
+        sessionStorage.setItem('my_library', JSON.stringify(this.libraryArray));
+    }
+
+    addBook(title, author, pages, isRead, id) {
+        this.libraryArray.push({ title, author, pages, isRead, id });
+        this.#storeLibrary();
+    }
+
+    removeBook(bookID) {
+        for (let i = 0; i < this.libraryArray.length; i++) {
+            if (this.libraryArray[i].id === bookID) {
+                this.libraryArray.splice(i, 1);
+            }
+        }
+        this.#storeLibrary();
+    }
+
+    toggleIsRead(checkBox, bookID) {
+        checkBox.addEventListener('change', () => {
+            for (let i = 0; i < this.libraryArray.length; i++) {
+                if (this.libraryArray[i].id === bookID) {
+                    this.libraryArray[i].isRead = checkBox.checked;
+                    this.#storeLibrary();
+                }
+            }
+        });
+    }
+
+    deleteLibrary() {
+        this.libraryArray = [];
+        this.#storeLibrary();
+    }
 }

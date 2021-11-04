@@ -1,17 +1,12 @@
 import { closeForm, clearLibrary } from './utils/functions.js';
-import {
-    getLibrary,
-    addBook,
-    removeBook,
-    toggleIsRead,
-    deleteLibrary,
-    Book,
-} from './stores/library.js';
+import { Library } from './stores/library.js';
 
 const body = document.getElementsByClassName('body')[0];
 const formWrapper = document.getElementById('form-wrapper');
 
-populateLibrary(getLibrary());
+const myLibrary = new Library();
+
+populateLibrary(myLibrary.getLibrary());
 
 function generateID() {
     return Math.floor(Math.random() * 10000 + 1);
@@ -24,7 +19,7 @@ function openForm() {
 
 function addEventForDelete(deleteButton, bookID) {
     const removeSelectedBook = () => {
-        removeBook(bookID);
+        myLibrary.removeBook(bookID);
         // deleteButton.removeEventListener('click', removeSelectedBook);
         deleteButton.parentElement.remove();
     };
@@ -95,7 +90,7 @@ function createCard(title, author, pages, isRead, bookID) {
     cardReadBookCheckbox.setAttribute('class', 'card-read-book-checkbox');
     cardReadBookCheckbox.classList.add('card-checkbox');
     cardReadBookCheckbox.checked = isRead;
-    toggleIsRead(cardReadBookCheckbox, bookID);
+    myLibrary.toggleIsRead(cardReadBookCheckbox, bookID);
     cardReadBookSpan.append(cardReadBookCheckbox);
 
     fragment.append(cardElement);
@@ -124,7 +119,7 @@ function saveBook() {
     if (title === '' || author === '' || pages === '' || pagesElement.patternMismatch === true) {
         return;
     } else {
-        addBook(title, author, pages, isRead, bookID);
+        myLibrary.addBook(title, author, pages, isRead, bookID);
         createCard(title, author, pages, isRead, bookID);
         closeForm();
     }
@@ -141,22 +136,22 @@ document.getElementById('cancel-input').addEventListener('click', closeForm);
 document.getElementById('add-book-button').addEventListener('click', openForm);
 
 document.getElementById('refresh-library-button').addEventListener('click', () => {
-    populateLibrary(getLibrary());
+    populateLibrary(myLibrary.getLibrary());
 });
 
 document.getElementById('delete-library-button').addEventListener('click', () => {
-    deleteLibrary();
-    populateLibrary(getLibrary());
+    myLibrary.deleteLibrary();
+    populateLibrary(myLibrary.getLibrary());
 });
 
 document.getElementById('populate-library-button').addEventListener('click', () => {
     const testData = [
-        Book('The Secret History', 'Donna Tartt', '551', true, generateID()),
-        Book('The Little Friend', 'Donna Tartt', '643', false, generateID()),
-        Book('The Goldfinch', 'Donna Tartt', '1006', true, generateID()),
+        myLibrary.Book('The Secret History', 'Donna Tartt', '551', true, generateID()),
+        myLibrary.Book('The Little Friend', 'Donna Tartt', '643', false, generateID()),
+        myLibrary.Book('The Goldfinch', 'Donna Tartt', '1006', true, generateID()),
     ];
     testData.forEach(({ title, author, pages, isRead, id }) => {
-        addBook(title, author, pages, isRead, id);
+        myLibrary.addBook(title, author, pages, isRead, id);
         createCard(title, author, pages, isRead, id);
     });
 });
