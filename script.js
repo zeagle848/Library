@@ -14,7 +14,7 @@ const formWrapper = document.getElementById('form-wrapper');
 populateLibrary(getLibrary());
 
 function generateID() {
-    return Math.floor(Math.random() * (1000 - 1 + 1) + 1);
+    return Math.floor(Math.random() * 10000 + 1);
 }
 
 function openForm() {
@@ -122,6 +122,7 @@ function saveBook() {
     const bookID = generateID();
 
     if (title === '' || author === '' || pages === '' || pagesElement.patternMismatch === true) {
+        return;
     } else {
         addBook(title, author, pages, isRead, bookID);
         createCard(title, author, pages, isRead, bookID);
@@ -150,9 +151,9 @@ document.getElementById('delete-library-button').addEventListener('click', () =>
 
 document.getElementById('populate-library-button').addEventListener('click', () => {
     const testData = [
-        new Book('The Secret History', 'Donna Tartt', '551', true, generateID()),
-        new Book('The Little Friend', 'Donna Tartt', '643', false, generateID()),
-        new Book('The Goldfinch', 'Donna Tartt', '1006', true, generateID()),
+        Book('The Secret History', 'Donna Tartt', '551', true, generateID()),
+        Book('The Little Friend', 'Donna Tartt', '643', false, generateID()),
+        Book('The Goldfinch', 'Donna Tartt', '1006', true, generateID()),
     ];
     testData.forEach(({ title, author, pages, isRead, id }) => {
         addBook(title, author, pages, isRead, id);

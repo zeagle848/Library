@@ -1,11 +1,7 @@
 let library = retrieveLibrary() || [];
 
-export function Book(title, author, pages, isRead, id) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
-  this.id = id;
+export function Book(title, author, pages, isRead, id) { //Converted to a factory function
+  return {title, author, pages, isRead, id};
 }
 
 function retrieveLibrary() {
@@ -24,8 +20,8 @@ export function getLibrary() {
   return library;
 }
 
-export function addBook(title, author, pages, isRead, bookID) {
-  library.push(new Book(title, author, pages, isRead, bookID));
+export function addBook(title, author, pages, isRead, id) {
+  library.push({title, author, pages, isRead, id});
   storeLibrary();
 }
 
