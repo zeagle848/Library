@@ -13,13 +13,20 @@
     "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-import": "^2.24.2",
     "mocha": "^9.1.2",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "css-loader": "^6.5.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier . --write",
     "lint": "eslint . ",
-    "e2e": "cypress open"
+    "e2e": "cypress open",
+    "build": "webpack",
+    "serve": "webpack serve --open"
   },
   "repository": {
     "type": "git",

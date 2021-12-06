@@ -4,10 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
     <title>Library</title>
   </head>
-  <body class="body">
+  <body id="root" class="body">
     <div id="form-wrapper" class="form-wrapper">
       <div id="form-container" class="form-container">
         <p id="cancel-input" class="cancel-input">X</p>
@@ -59,11 +58,7 @@
       </div>
     </div>
     <header id="library-header" class="library-header">
-      <img
-        src="./images/book_stack.png"
-        alt="a stack of books"
-        id="header-image"
-      />
+      <img src="./book_stack.png" alt="a stack of books" id="header-image" />
       <h1 id="header-heading" class="header-heading">My Library</h1>
       <div id="button-container" class="button-container">
         <button id="add-book-button" class="header-button add-book-button">
@@ -75,7 +70,10 @@
         <button id="populate-library-button" class="header-button">
           Populate Library
         </button>
-        <button id="delete-library-button" class="header-button delete-library-button">
+        <button
+          id="delete-library-button"
+          class="header-button delete-library-button"
+        >
           Delete Library
         </button>
       </div>
@@ -89,6 +87,6 @@
         </span>
       </footer>
     </div>
-    <script type="module" src="./script.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
