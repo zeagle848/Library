@@ -27,7 +27,7 @@ The application should be live on `http://localhost:8080/` if it doesn't open au
 
 ## Development Notes
 
-This is the first app developed as a part of TOP that makes use of session storage. The session storage makes use of the Storage object to save session data that expires only once the page session ends. Session storage saves the array called `library`, which hold all the book objects that contains author, book name, number of pages, whether the book is read and the unique ID, each time a new book is added, removed or modified. The only property of a book that the user modify, that is once the book has already been added, is the `isRead` property. This is moddled with a checkbox input on the book card. 
+This is the first app developed as a part of TOP that makes use of session storage. The session storage uses the Storage object to save session data that expires only once the page session ends. Session storage saves the array called `library`, which hold all the book objects that contains author, book name, number of pages, whether the book is read and the unique ID, each time a new book is added, removed or modified. The only property of a book that the user modify, that is once the book has already been added, is the `isRead` property. This is moddled with a checkbox input on the book card. 
 
 The user can interact with with four buttons on the header banner. The add book button, refresh library button, populate library button and delete library button. 
 
