@@ -23,7 +23,7 @@ To view the app locally you can begin by installing the dependencies...
 
 `npm run serve`.
 
-The application should be live on `http://localhost:8080/` if it doesn't open automatically.
+The application should be live on `http://localhost:8080/` if it doesn't open automatically. 
 
 ## Development Notes
 
