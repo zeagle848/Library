@@ -9,7 +9,6 @@ import { renderNewBookModal } from './components/renderNewBookModal';
 
 function closeModal() {
   const modal = document.getElementById('modal-wrapper');
-  console.log(modal);
   modal.remove();
 }
 
