@@ -7,73 +7,14 @@
     <title>Library</title>
   </head>
   <body id="root" class="body">
-    <div id="form-wrapper" class="form-wrapper">
-      <div id="form-container" class="form-container">
-        <p id="cancel-input" class="cancel-input">X</p>
-        <form
-          onsubmit="saveBook(); return false;"
-          id="new-book-form"
-          class="new-book-form"
-        >
-          <h2>Tell me about your book</h2>
-          <span
-            >Title:
-            <input
-              type="text"
-              class="book-info-input"
-              id="title-input"
-              required="required"
-          /></span>
-          <span
-            >Author:
-            <input
-              type="text"
-              class="book-info-input"
-              id="author-input"
-              required="required"
-          /></span>
-          <span
-            >No. pages:
-            <input
-              type="text"
-              class="book-info-input"
-              id="pages-input"
-              required="required"
-              pattern="[0-9]+"
-              title="Please only enter numbers"
-          /></span>
-          <span class="book-info-input read-book-span" id="read-book-span"
-            >Have you read this book?
-            <label class="switch">
-              <input type="checkbox" id="read-book-checkbox" />
-              <span class="slider"></span> </label
-          ></span>
-          <input
-            type="submit"
-            value="Submit"
-            id="submit-book-button"
-            class="submit-book-button"
-          />
-        </form>
-      </div>
-    </div>
     <header id="library-header" class="library-header">
       <img src="./book_stack.png" alt="a stack of books" id="header-image" />
       <h1 id="header-heading" class="header-heading">My Library</h1>
       <div id="button-container" class="button-container">
-        <button id="add-book-button" class="header-button add-book-button">
-          +
-        </button>
-        <button id="refresh-library-button" class="header-button">
-          Refresh Library
-        </button>
-        <button id="populate-library-button" class="header-button">
-          Populate Library
-        </button>
-        <button
-          id="delete-library-button"
-          class="header-button delete-library-button"
-        >
+        <button id="add-book-button" class="header-button add-book-button">+</button>
+        <button id="refresh-library-button" class="header-button">Refresh Library</button>
+        <button id="populate-library-button" class="header-button">Populate Library</button>
+        <button id="delete-library-button" class="header-button delete-library-button">
           Delete Library
         </button>
       </div>

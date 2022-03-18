@@ -1,6 +1,6 @@
 describe('Testing the library', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:8081/');
+    cy.visit('http://localhost:8080/');
   });
   it('Can populate library with books after clicking populate library button', () => {
     cy.get('#populate-library-button').click();
@@ -23,27 +23,27 @@ describe('Testing the library', () => {
   });
   it('Can close submit form when the user clicks on the cancel input button', () => {
     cy.get('#add-book-button').click();
-    cy.get('#form-container').should('be.visible');
+    cy.get('#modal-container').should('be.visible');
     cy.get('#cancel-input').click();
-    cy.get('#form-container').should('not.be.visible');
+    cy.get('#modal-container').should('not.exist');
   });
   it('Can close submit form when the user clicks on the background', () => {
     cy.get('#add-book-button').click();
-    cy.get('#form-container').should('be.visible');
-    cy.get('#form-wrapper').click({ force: true });
-    cy.get('#form-container').should('not.be.visible');
+    cy.get('#modal-container').should('be.visible');
+    cy.get('#modal-wrapper').click({ force: true });
+    cy.get('#modal-container').should('not.exist');
   });
   it("Doesn't submit the form when none of the fields are filled out", () => {
     cy.get('#add-book-button').click();
     cy.get('#submit-book-button').click();
-    cy.get('#form-container').should('be.visible');
+    cy.get('#modal-container').should('be.visible');
   });
   it("Doesn't submit the form when a feild is left out", () => {
     cy.get('#add-book-button').click();
     cy.get('#title-input').type('The Secret History');
     cy.get('#author-input').type('Donna Tartt');
     cy.get('#submit-book-button').click();
-    cy.get('#form-container').should('be.visible');
+    cy.get('#modal-container').should('be.visible');
   });
   it("Doesn't submit the form when the pages input includes characters other than numbers", () => {
     cy.get('#add-book-button').click();
@@ -51,7 +51,7 @@ describe('Testing the library', () => {
     cy.get('#author-input').type('Donna Tartt');
     cy.get('#pages-input').type('123a');
     cy.get('#submit-book-button').click();
-    cy.get('#form-container').should('be.visible');
+    cy.get('#modal-container').should('be.visible');
   });
   it('Submits and closes the form when all input feilds are filled out correctly', () => {
     cy.get('#add-book-button').click();
@@ -59,7 +59,7 @@ describe('Testing the library', () => {
     cy.get('#author-input').type('Donna Tartt');
     cy.get('#pages-input').type('123');
     cy.get('#submit-book-button').click();
-    cy.get('#form-container').should('not.be.visible');
+    cy.get('#modal-container').should('not.exist');
 
     cy.get('#delete-library-button').click();
   });

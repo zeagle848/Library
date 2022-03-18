@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap');
 
 .body {
   margin: 0;
   padding: 0;
-  font-family: "Mulish", sans-serif;
+  font-family: 'Mulish', sans-serif;
 }
 
 .body-no-scroll {
@@ -22,7 +22,7 @@
   margin-bottom: 20px;
 }
 .header-heading {
-  font-family: "Mulish", sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-weight: normal;
   padding-top: 20px;
   width: 100%;
@@ -38,7 +38,7 @@
   margin: 10px;
   margin-top: 30px;
   border-radius: 0;
-  font-family: "Mulish", sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-weight: bolder;
   cursor: pointer;
   background-color: #f7e6c3;
@@ -71,22 +71,21 @@
 }
 
 /* FORM STYLING */
-.form-wrapper {
+.modal-wrapper {
   width: 100vw;
   height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.2);
-  display: none;
   z-index: 1;
 }
 
-.form-wrapper-visible {
+.modal-wrapper-visible {
   display: block;
 }
 
-.form-container {
+.modal-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -152,7 +151,7 @@
   border-right: none;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
-  font-family: "Mulish", sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-size: 20px;
   cursor: pointer;
 }
@@ -237,7 +236,7 @@
   display: flex;
   align-content: flex-end;
   justify-content: flex-end;
-  font-family: "M PLUS 1p", sans-serif;
+  font-family: 'M PLUS 1p', sans-serif;
   font-weight: lighter;
   padding: 4px;
 }
