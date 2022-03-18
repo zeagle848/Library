@@ -5,8 +5,6 @@ import { toggleIsRead } from './utils/toggleIsRead';
 import { renderBookCard } from './components/renderBookCard';
 import { renderNewBookModal } from './components/renderNewBookModal';
 
-// CLOSE MODAL FUNCTION
-
 function closeModal() {
   const modal = document.getElementById('modal-wrapper');
   modal.remove();
