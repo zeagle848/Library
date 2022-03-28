@@ -12,10 +12,10 @@ function setInitialStateFromStorage() {
   }
 }
 
-export function addBook({ title, author, pages, isRead }) {
+export function addBook({ title, author, pages, isRead, id = null }) {
   state = {
     ...state,
-    books: [...state.books, Book({ title, author, pages, isRead })],
+    books: [...state.books, Book({ title, author, pages, isRead, id })],
   };
   setStateToStorage(state);
   return state;
@@ -35,6 +35,7 @@ export function toggleIsBookRead({ bookId, isRead }) {
     }),
   };
   setStateToStorage(state);
+  return state;
 }
 
 export function removeBook({ bookIdToRemove }) {
@@ -43,6 +44,7 @@ export function removeBook({ bookIdToRemove }) {
     books: state.books.filter((book) => book.id !== bookIdToRemove),
   };
   setStateToStorage(state);
+  return state;
 }
 
 export function getState() {
@@ -54,6 +56,7 @@ export function deleteLibrary() {
     books: [],
   };
   setStateToStorage(state);
+  return state;
 }
 
 setInitialStateFromStorage();

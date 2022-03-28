@@ -4,6 +4,7 @@ import { addBook, removeBook, getState, deleteLibrary } from './state/storage';
 import { toggleIsRead } from './utils/toggleIsRead';
 import { renderBookCard } from './components/renderBookCard';
 import { renderNewBookModal } from './components/renderNewBookModal';
+import { populateLibrary } from './utils/populateLibrary';
 
 function closeModal() {
   const modal = document.getElementById('modal-wrapper');
@@ -48,10 +49,7 @@ document.getElementById('delete-library-button').addEventListener('click', () =>
 });
 
 document.getElementById('populate-library-button').addEventListener('click', () => {
-  addBook({ title: 'The Secret History', author: 'Donna Tartt', pages: '551', isRead: true });
-  addBook({ title: 'The Little Friend', author: 'Donna Tartt', pages: '643', isRead: false });
-  addBook({ title: 'The Goldfinch', author: 'Donna Tartt', pages: '1006', isRead: true });
-
+  populateLibrary();
   updateBookItems();
 });
 
